@@ -1,0 +1,23 @@
+name: Deploy FreeVPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Validate YAML
+        uses: sdesalas/validate-yaml-action@v1
+        with:
+          yamlFiles: |
+            blank.yml
+            
+      # Add steps for deploying FreeVPS here
+      # For example, you could use SSH to connect to the VPS and run setup scripts
